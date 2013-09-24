@@ -35,6 +35,7 @@ $stack['Example'] = array(
 ?>
 <div class="control-bar">
 	<nav>
+		<li>RadioShow (<a href="https://github.com/pixleyes/RadioShow">GitHub project</a>)</li>
 		<li class="cat">layout:</li>
 		<li data-layout="showcase-alt">alternate</li>
 		<li class="cat">controls:</li>
