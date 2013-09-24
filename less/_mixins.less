@@ -1,0 +1,95 @@
+@highdpi: ~"(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-resolution: 1.5dppx)";
+
+.at2x(@path, @w: auto, @h: auto) {
+	background-image: url(@path);
+	@at2x_path: ~`@{path}.replace(/\.\w+$/, function(match) { return "@2x" + match; })`;
+
+	@media @highdpi {
+		background-image: url("@{at2x_path}");
+		background-size: @w @h;
+	}
+}
+
+.gradient (@startColor: #eee, @endColor: #fff) {
+	background-color: @startColor;
+	background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+	background: -webkit-linear-gradient(top, @startColor, @endColor);
+	background: -moz-linear-gradient(top, @startColor, @endColor);
+	background: -ms-linear-gradient(top, @startColor, @endColor);
+	background: -o-linear-gradient(top, @startColor, @endColor);
+}
+.horizontal-gradient (@startColor: #eee, @endColor: #fff) {
+ 	background-color: @startColor;
+	background-image: -webkit-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+	background-image: -webkit-linear-gradient(left, @startColor, @endColor);
+	background-image: -moz-linear-gradient(left, @startColor, @endColor);
+	background-image: -ms-linear-gradient(left, @startColor, @endColor);
+	background-image: -o-linear-gradient(left, @startColor, @endColor);
+}
+
+.gradient-radial(@innerColor: #EEE, @outerColor: #FFF, @h: 50%, @v: 50%) {
+	background-color: mix(@innerColor,@outerColor);
+	background-image: -webkit-gradient(radial, @h @v, 200, @h @v, 20, from(@outerColor), to(@innerColor));
+	background-image: -webkit-radial-gradient(@h @v, @innerColor, @outerColor);
+	background-image:    -moz-radial-gradient(@h @v, @innerColor, @outerColor);
+	background-image:      -o-radial-gradient(@h @v, @innerColor, @outerColor);
+	background-image:         radial-gradient(@h @v, @innerColor, @outerColor);
+}
+.animation(@name, @duration: 60ms, @delay: 0, @iteration: 1, @ease: linear) {
+	-webkit-animation: @name @duration @delay @iteration @ease;
+	-moz-animation:    @name @duration @delay @iteration @ease;
+	-ms-animation:     @name @duration @delay @iteration @ease;
+}
+.transition(@property: all, @duration: .5s) {
+	-webkit-transition: @property @duration;
+	-moz-transition:    @property @duration;
+	-ms-transition:     @property @duration;
+	-o-transition:      @property @duration;
+	transition:         @property @duration;
+}
+.transform(@string) {
+	-webkit-transform: @string;
+	-moz-transform:    @string;
+	-ms-transform:     @string;
+	-o-transform:      @string;
+	transform:         @string;
+}
+.scale (@factor) {
+	-webkit-transform: scale(@factor);
+	-moz-transform:    scale(@factor);
+	-ms-transform:     scale(@factor);
+	-o-transform:      scale(@factor);
+	transform:         scale(@factor);
+}
+.rotate (@deg) {
+	-webkit-transform: rotate(@deg);
+	-moz-transform:    rotate(@deg);
+	-ms-transform:     rotate(@deg);
+	-o-transform:      rotate(@deg);
+	transform:         rotate(@deg);
+}
+.caret(@kind: down, @size: 5px, @color: @base) {
+	font-size:0;
+	line-height:0;
+	width:0;
+	border:@size solid transparent;
+	display:inline-block;
+	position:relative;
+	}
+.caret(up, @size: 5px, @color: @base) {
+	border-top-width:0;
+	border-bottom-color:@color;
+	top:-@size;
+}
+.caret(down, @size: 5px, @color: @base) {
+	border-bottom-width:0;
+	border-top-color:@color;
+}
+.caret(left, @size: 5px, @color: @base) {
+	border-left-width:0;
+	border-right-color:@color;
+}
+.caret(right, @size: 5px, @color: @base) {
+	border-right-width:0;
+	border-left-color:@color;
+}

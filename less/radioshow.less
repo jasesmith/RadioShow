@@ -1,0 +1,265 @@
+@import "_variables.less";
+@import "_mixins.less";
+
+body{
+	padding-top:4em;
+}
+
+section {
+	margin:0 auto;
+	width:85%;
+	max-width:1024px;
+	
+	header {
+		font-size:2em;
+		margin:0 0 1em 0;
+	}
+	
+}
+article {
+	clear:both;
+	padding:0;
+}
+.control-bar {
+	line-height:1.4;
+	margin:0;
+	background:@base;
+	color:#FFF;
+	padding:1em;
+	position:fixed;
+	text-align:center;
+	font-size:1.2em;
+	top:0;
+	left:0;
+	right:0;
+	nav .cat {
+		color:@base-border;
+	}
+}
+.showcase {
+	position:relative;
+	clear:both;
+	height:73vh;
+	text-align:center;
+	
+	.story {
+		position:absolute;
+		top:2.5em;
+		left:0;
+		right:0;
+		bottom:0;
+		opacity:0;
+		border:0px solid darken(@base,15%);
+		border-radius:.5em;
+		background: @base no-repeat 50% 50%;
+		background-size: cover;
+		box-shadow:0 0 2em fadeout(#000,65%);
+		z-index:1;
+		overflow:hidden;
+		.transition(all, 1s);
+		.scale(.6);
+	}
+	
+	.text {
+		position:absolute;
+		text-align:left;
+		/* border-left:2px solid darken(@base,15%); */
+		border-radius:0;
+		background:fadeout(#000,35%);
+		color: @bg;
+		overflow-y:auto;
+		
+		.padme {
+			padding:2em;
+		}
+	}
+	
+	h2 {
+		margin-bottom:1em;
+		color: @accent;
+	}
+	
+	p {
+		font-size:1.3em;
+	}
+	
+	input {
+		position:relative;
+		
+		&[type=radio] {
+			-webkit-appearance:none;
+			border:1px solid @base-border;
+			border-radius:1.5em;
+			padding:.75em;
+			z-index:100;
+			cursor:pointer;
+			background: fadeout(@base-bg,85%);
+			margin-right:1em;
+			.scale(1);
+			
+			&:checked {
+				background:@accent;
+			}
+		}
+		
+		&:checked + .story {
+			.transition(all, .75s);
+			.scale(1);
+			opacity:1;
+			z-index:2;
+		}
+	}
+	
+	label.next {
+		float:right;
+		margin-left:1em;
+	}
+}
+
+.showcase-alt {
+	height:auto;
+	padding-top:73vh;
+	
+	.story {
+		top:0;
+		bottom:3em;
+	}
+}
+
+.showcase-left {
+	text-align:left;
+}
+
+.showcase-right {
+	text-align:right;
+}
+
+.slide-up {
+	.text {
+		right:0;
+		top:100%;
+		left:0;
+		height:35%;
+		.transition(top, .65s);
+	}
+	
+	.story:hover .text,
+	&.sticky-text:hover .text,
+	&.persist-text .text {
+		top:65%;
+	}
+}
+
+.slide-down {
+	.text {
+		right:0;
+		bottom:100%;
+		left:0;
+		height:35%;
+		.transition(bottom, .65s);
+	}
+	
+	.story:hover .text,
+	&.sticky-text:hover .text,
+	&.persist-text .text {
+		bottom:65%;
+	}
+}
+
+.slide-left {
+	.text {
+		top:0;
+		bottom:0;
+		left:100%;
+		width:35%;
+		.transition(left, .65s);
+	}
+	
+	.story:hover .text,
+	&.sticky-text:hover .text,
+	&.persist-text .text {
+		left:65%;
+	}
+}
+
+.slide-right {
+	.text {
+		top:0;
+		right:100%;
+		bottom:0;
+		width:35%;
+		.transition(right, .65s);
+	}
+	
+	.story:hover .text,
+	&.sticky-text:hover .text,
+	&.persist-text .text {
+		right:65%;
+	}
+}
+
+.button {
+	border-radius:.25em;
+	padding:.25em 1em .35em 1em;
+	box-shadow:0 0 0 1px rgba(0,0,0,.25);
+	border:0;
+	border-top:1px solid lighten(@accent, 10%);
+	text-shadow:0 0 2px rgba(0,0,100,.85);
+	color:#FFF;
+	font-size:1.2em;
+	display:inline-block;
+	outline:none;
+	cursor:pointer;
+	background:@accent none no-repeat 0 0;
+	/* .gradient(@accent, darken(@accent, 15%)); */
+	
+	&:hover,
+	&:focus {
+		box-shadow:0 0 0 1px rgba(0,0,0,.35), 0 0 1em rgba(0,0,0,.35);
+		/* .gradient(lighten(@accent,3%), lighten(@accent, 1%)); */
+	}
+	
+	&:active {
+		/* .gradient(lighten(@accent,15%), @accent); */
+		background-color:@base;
+		border-top-color:lighten(@base,10%);
+	}
+}
+
+
+[data-title]:before,
+[data-title]:after {
+	display:none;
+	position:absolute;
+}
+
+[data-title]:before {
+	content:attr(data-title);
+	bottom:160%;
+	left:-100%;
+	background:fadeout(#000,35%);
+	color:#FFF;
+	padding:.5em 1em;
+	box-shadow:0 0 .5em fadeout(@base-bg,50%);
+	border-radius:.35em;
+	white-space:nowrap;
+	font-size:1.3em;
+	letter-spacing:-.1em;
+	z-index:1;
+}
+[data-title]:after {
+	content:'';
+	top:-60%;
+	left:9%;
+	border-style:solid;
+	border-color:fadeout(#000,35%) transparent transparent transparent;
+	border-width:.65em .65em 0 .65em;
+	width:0;
+	height:0;
+	z-index:2;
+}
+
+[data-title]:hover:before,
+[data-title]:hover:after {
+	display:block;
+}
