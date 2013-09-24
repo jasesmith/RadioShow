@@ -1,6 +1,6 @@
 <?php
 $stack['Example'] = array(
-			'intro' => 'The RadioShow &mdash; A CSS3 Image Showcase.',
+			'intro' => 'RadioShow &mdash; A CSS3 Image Showcase.',
 			'shots' => array(
 				1 => array(
 						'headline' => 'Helvetica',
