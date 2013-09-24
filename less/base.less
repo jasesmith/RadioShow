@@ -4,7 +4,7 @@
 /* STYLES */
 body {
 	margin:0;
-	padding:0;
+	padding:4em 0 0 0;
 	font-family:Helvetica, arial, freesans, clean, sans-serif;
 	font-size:13px;
 	background:@bg;
@@ -25,20 +25,16 @@ h1,h2,h3,h4 {
 	margin:0;
 }
 
-/* headers */
+a {
+	text-decoration:none;
+	color:@accent;
+	&:hover {
+		color:darken(@accent,15%);
+	}
+}
+
 header {
 	color:lighten(@base,20%);
-	span {
-		color:darken(@accent,20%);
-	}
-	a {
-		text-decoration:none;
-		color:@accent;
-		text-shadow:0 1px 0 #FFFFFF;
-		&:hover {
-			color:darken(@accent,15%);
-		}
-	}
 }
 nav {
 	li {
@@ -56,14 +52,4 @@ nav {
 section {
 	min-height:50em;
 	padding:2em 0;
-	border-bottom:2px solid darken(@base,35%);
-	position:relative;
-	
-	&:first-of-type {
-		border-top:0;
-	}
-	
-	&:last-of-type {
-		border-bottom:0;
-	}
 }

@@ -1,7 +1,7 @@
 /* STYLES */
 body {
   margin: 0;
-  padding: 0;
+  padding: 4em 0 0 0;
   font-family: Helvetica, arial, freesans, clean, sans-serif;
   font-size: 13px;
   background: #f1efee;
@@ -22,20 +22,15 @@ h4 {
   font-weight: 100;
   margin: 0;
 }
-/* headers */
-header {
-  color: #63696f;
-}
-header span {
-  color: #00aaff;
-}
-header a {
+a {
   text-decoration: none;
   color: #66ccff;
-  text-shadow: 0 1px 0 #FFFFFF;
 }
-header a:hover {
+a:hover {
   color: #19b3ff;
+}
+header {
+  color: #63696f;
 }
 nav li {
   list-style: none;
@@ -51,12 +46,4 @@ nav .cat {
 section {
   min-height: 50em;
   padding: 2em 0;
-  border-bottom: 2px solid #000000;
-  position: relative;
-}
-section:first-of-type {
-  border-top: 0;
-}
-section:last-of-type {
-  border-bottom: 0;
 }

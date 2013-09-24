@@ -1,17 +1,17 @@
 <?php
 $stack['Example'] = array(
-			'intro' => 'The RadioShow &mdash; A CSS3 Showcase.',
+			'intro' => 'The RadioShow &mdash; A CSS3 Image Showcase.',
 			'shots' => array(
 				1 => array(
-						'headline' => 'Helbotica',
-						'desc' => array('A pure font, excellent for building robots.')
+						'headline' => 'Helvetica',
+						'desc' => array('A pure type face, excellent for building awesome robot shirts.','<a href="http://chopshopstore.com/index.php/helbotica.html" target="_blank">Want one?</a>',)
 					),
 				2 => array(
 						'headline' => 'Coffee Time',
 						'desc' => array('Drinking coffee with a friend is a good thing.', 'Invest in human beans.')
 					),
 				3 => array(
-						'headline' => 'Fishermans Are Bad-Ass',
+						'headline' => 'Fishermans Are Bad Ass',
 						'desc' => array('&ldquo;My big fish must be somewhere.&rdquo;','&mdash; Ernest Hemingway, <em>The Old Man and the Sea</em>')
 					),
 				4 => array(
