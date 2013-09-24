@@ -36,7 +36,7 @@
 /* layout helper styles */
 section {
   margin: 0 auto;
-  width: 85%;
+  width: 85vw;
   max-width: 1024px;
 }
 section header {
@@ -96,6 +96,7 @@ article {
   position: relative;
   clear: both;
   height: 73vh;
+  width: 100%;
   text-align: center;
 }
 .showcase .story {
@@ -146,7 +147,7 @@ article {
 }
 .showcase input[type=radio] {
   -webkit-appearance: none;
-  border: 1px solid #6d8fb1;
+  border: 2px solid #6d8fb1;
   border-radius: 1.5em;
   padding: .75em;
   z-index: 100;
