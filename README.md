@@ -1,4 +1,4 @@
 RadioShow
 =========
 
-CSS slideshow/showcase using radio buttons
+A CSS3 image showcase using radio buttons.
