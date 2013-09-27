@@ -40,12 +40,12 @@
 	-moz-animation:    @name @duration @delay @iteration @ease;
 	-ms-animation:     @name @duration @delay @iteration @ease;
 }
-.transition(@property: all, @duration: .5s) {
-	-webkit-transition: @property @duration;
-	-moz-transition:    @property @duration;
-	-ms-transition:     @property @duration;
-	-o-transition:      @property @duration;
-	transition:         @property @duration;
+.transition(@property: all, @duration: .5s, @delay: 0s, @function: ease) {
+	-webkit-transition: @property @duration @function @delay;
+	-moz-transition:    @property @duration @function @delay;
+	-ms-transition:     @property @duration @function @delay;
+	-o-transition:      @property @duration @function @delay;
+	transition:         @property @duration @function @delay;
 }
 .transform(@string) {
 	-webkit-transform: @string;

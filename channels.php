@@ -1,6 +1,6 @@
 <?php
 $stack['Example'] = array(
-			'intro' => 'RadioShow &mdash; A CSS3 Image Showcase.',
+			'intro' => '<span class="mark">RadioShow</span> <small>A CSS3 Image Showcase</small>',
 			'shots' => array(
 				1 => array(
 						'headline' => 'Helvetica',
@@ -32,29 +32,7 @@ $stack['Example'] = array(
 					)
 			)
 		);
-?>
-<div class="control-bar">
-	<nav>
-		<li>RadioShow (<a href="https://github.com/pixleyes/RadioShow">GitHub project</a>)</li>
-		<li class="cat">layout:</li>
-		<li data-layout="showcase-alt">alternate</li>
-		<li class="cat">controls:</li>
-		<li data-pos="showcase-left">left</li>
-		<li data-pos="">center</li>
-		<li data-pos="showcase-right">right</li>
-		<li class="cat">slide:</li>
-		<li data-slide="slide-up">up</li>
-		<li data-slide="slide-down">down</li>
-		<li data-slide="slide-left">left</li>
-		<li data-slide="slide-right">right</li>
-		<li class="cat">text:</li>
-		<li data-text="">normal</li>
-		<li data-text="sticky-text">sticky</li>
-		<li data-text="persist-text">persist</li>
-	</nav>
-</div>
 
-<?php
 foreach($stack as $name => $data)
 {
 	$key = str_replace(' ','-',strtolower($name));
@@ -62,17 +40,50 @@ foreach($stack as $name => $data)
 	<section id="<?php echo $key ?>">
 		<header>
 			<h1><?php echo $data['intro'] ?></h1>
+			<nav class="control-bar">
+				<li class="cat">Placement:</li>
+				<li data-layout="radioshow-top" class="active">top</li>
+				<li data-layout="radioshow-bottom">bottom</li>
+				<li class="cat">/</li>
+				<li data-pos="radioshow-left">left</li>
+				<li data-pos="" class="active">center</li>
+				<li data-pos="radioshow-right">right</li>
+				<li class="cat">Transition:</li>
+				<li data-fx="" class="active">none</li>
+				<li data-fx="radioshow-fade">fade</li>
+				<li data-fx="radioshow-scale">scale</li>
+				
+				<li class="cat">Caption:</li>
+				<li data-text="" data-control="slide" class="active">hover</li>
+				<li data-text="persist-text" data-control="static">persist</li>
+				<li data-text="hide-text" data-control="hide">hide</li>
+				
+				<li class="cat slide">Direction:</li>
+				<li class="slide" data-slide="slide-up">up</li>
+				<li class="slide" data-slide="slide-down">down</li>
+				<li class="slide active" data-slide="slide-left">left</li>
+				<li class="slide" data-slide="slide-right">right</li>
+				
+				<li class="cat static hidden">Position:</li>
+				<li class="static hidden" data-static="static-top">top</li>
+				<li class="static hidden" data-static="static-bottom">bottom</li>
+				<li class="static hidden" data-static="static-left">left</li>
+				<li class="static hidden active" data-static="static-right">right</li>
+			</nav>
 		</header>
 		<article>
-			<div class="showcase slide-left sticky-text">
-				
-				<?php foreach($data['shots'] as $shot => $bits) { ?>
-				
-				<input type="radio" name="<?php echo $key ?>-flip" id="<?php echo $key ?>-flip-<?php echo $shot; ?>"<?php echo $shot == 1 ? 'checked="checked"' : '' ?> data-title="<?php echo $bits['headline'] ?>" />
+			<div class="radioshow slide-left">
+			<?php
+			foreach($data['shots'] as $shot => $bits)
+			{
+				$next_shot = $shot == count($stack[$name]['shots']) ? 1 : $shot+1;
+				?>
+				<input class="trigger" type="radio" name="<?php echo $key ?>-flip" id="<?php echo $key ?>-flip-<?php echo $shot; ?>"<?php echo $shot == 1 ? 'checked="checked"' : '' ?> />
+				<label class="cue" for="<?php echo $key ?>-flip-<?php echo $shot; ?>" data-title="<?php echo $bits['headline'] ?>"><span><?php echo $shot ?></span></label>
 				<div class="story" style="background-image:url(images/<?php echo $key ?>-<?php echo $shot ?>.jpg);">
 					<div class="text">
 						<div class="padme">
-							<label class="next button" for="<?php echo $key ?>-flip-<?php echo $shot == count($stack[$name]['shots']) ? 1 : $shot+1; ?>">
+							<label class="next button" for="<?php echo $key ?>-flip-<?php echo $next_shot; ?>">
 								<?php echo $shot == count($stack[$name]['shots']) ? 'Start Over' : 'Next'; ?>
 							</label>
 							<h2><?php echo $bits['headline'] ?></h2>
@@ -95,6 +106,9 @@ foreach($stack as $name => $data)
 				
 			</div>
 		</article>
+		<footer>
+			<a href="https://github.com/pixleyes/RadioShow">RadioShow on GitHub</a>
+		</footer>
 	</section>
 	<?php
 }

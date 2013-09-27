@@ -10,12 +10,12 @@
   left: -100%;
   background: rgba(0, 0, 0, 0.65);
   color: #FFF;
-  padding: .5em 1em;
-  box-shadow: 0 0 0.5em rgba(209, 220, 231, 0.5);
-  border-radius: .35em;
+  padding: .5rem 1rem;
+  box-shadow: 0 0 0.5rem rgba(209, 220, 231, 0.5);
+  border-radius: .35rem;
   white-space: nowrap;
-  font-size: 1.3em;
-  letter-spacing: -0.1em;
+  font-size: .85rem;
+  text-shadow: 0 -1px 1px #000000;
   z-index: 1;
 }
 [data-title]:after {
@@ -24,7 +24,7 @@
   left: 9%;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.65) transparent transparent transparent;
-  border-width: .65em .65em 0 .65em;
+  border-width: .5rem .5rem 0 .5rem;
   width: 0;
   height: 0;
   z-index: 2;
@@ -34,9 +34,12 @@
   display: block;
 }
 /* layout helper styles */
+body {
+  padding-bottom: 4em;
+}
 section {
   margin: 0 auto;
-  width: 85vw;
+  width: 70vw;
   max-width: 1024px;
 }
 section header {
@@ -48,83 +51,53 @@ article {
   padding: 0;
 }
 .control-bar {
-  line-height: 1.4;
+  line-height: 1;
   margin: 0;
-  background: #333639;
+  background: rgba(51, 54, 57, 0.15000000000000002);
+  border-top: 1px solid #cec8c4;
+  border-bottom: 1px solid #ffffff;
   color: #FFF;
-  padding: .5em;
-  position: fixed;
-  text-align: center;
-  font-size: 1.2em;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-.control-bar nav .cat {
-  color: #6d8fb1;
+  padding: 1em;
+  border-radius: .3em;
+  font-size: .85rem;
 }
 .button {
-  border-radius: .25em;
-  padding: .25em 1em .35em 1em;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
-  border: 0;
-  border-top: 1px solid #99ddff;
-  text-shadow: 0 0 2px rgba(0, 0, 100, 0.85);
-  color: #FFF;
-  font-size: 1.2em;
-  display: inline-block;
-  outline: none;
-  cursor: pointer;
-  background: #66ccff none no-repeat 0 0;
-  /* .gradient(@accent, darken(@accent, 15%)); */
-
-}
-.button:hover,
-.button:focus {
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 0 1em rgba(0, 0, 0, 0.35);
-  /* .gradient(lighten(@accent,3%), lighten(@accent, 1%)); */
-
+  background-color: #66ccff;
+  border-top-color: #99ddff;
 }
 .button:active {
-  /* .gradient(lighten(@accent,15%), @accent); */
-
   background-color: #333639;
   border-top-color: #4b5054;
 }
 /* The important parts */
-.showcase {
+.radioshow {
   position: relative;
   clear: both;
-  height: 73vh;
+  height: 70vh;
   width: 100%;
   text-align: center;
+  -webkit-backface-visibility: hidden;
 }
-.showcase .story {
+.radioshow .story {
   position: absolute;
   top: 3em;
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0;
-  border: 0px solid #0f1011;
   border-radius: .5em;
   background: #333639 no-repeat 50% 50%;
   background-size: cover;
-  box-shadow: 0 0 2em rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0 3px rgba(109, 143, 177, 0.35) inset, 0 1em 2em 0em rgba(0, 0, 0, 0.15000000000000002);
   z-index: 1;
+  opacity: 0;
   overflow: hidden;
-  -webkit-transition: all 1s;
-  -moz-transition: all 1s;
-  -ms-transition: all 1s;
-  -o-transition: all 1s;
-  transition: all 1s;
   -webkit-transform: scale(0.6);
   -moz-transform: scale(0.6);
   -ms-transform: scale(0.6);
   -o-transform: scale(0.6);
   transform: scale(0.6);
 }
-.showcase .text {
+.radioshow .text {
   position: absolute;
   text-align: left;
   border-radius: 0;
@@ -132,93 +105,138 @@ article {
   color: #f1efee;
   overflow-y: auto;
 }
-.showcase .text .padme {
+.radioshow .text .padme {
   padding: 2em;
 }
-.showcase h2 {
-  margin-bottom: 1em;
-  color: #66ccff;
-}
-.showcase p {
-  font-size: 1.3em;
-}
-.showcase input {
-  position: relative;
-}
-.showcase input[type=radio] {
-  -webkit-appearance: none;
-  border: 2px solid #6d8fb1;
-  border-radius: 1.5em;
-  padding: .75em;
-  z-index: 100;
-  cursor: pointer;
-  background: rgba(209, 220, 231, 0.15000000000000002);
-  margin-right: 1em;
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transform: scale(1);
-}
-.showcase input[type=radio]:checked {
-  background: #66ccff;
-}
-.showcase input:checked + .story {
-  -webkit-transition: all 0.75s;
-  -moz-transition: all 0.75s;
-  -ms-transition: all 0.75s;
-  -o-transition: all 0.75s;
-  transition: all 0.75s;
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transform: scale(1);
-  opacity: 1;
-  z-index: 2;
-}
-.showcase label.next {
+.radioshow .text .next {
   float: right;
   margin-left: 1em;
 }
-.showcase-alt {
+.radioshow h2 {
+  margin-bottom: 1em;
+  color: #66ccff;
+}
+.radioshow p {
+  font-size: 1.3em;
+}
+.radioshow .trigger {
+  position: absolute;
+  opacity: 0;
+  z-index: 0;
+}
+.radioshow .cue {
+  position: relative;
+  box-shadow: 0 0 0 2px #6d8fb1;
+  border-top: 0.1rem solid rgba(255, 255, 255, 0.65);
+  border-radius: 1.5rem;
+  padding: .25rem .5rem .25rem .5rem;
+  z-index: 100;
+  cursor: pointer;
+  background: rgba(209, 220, 231, 0.35);
+  color: rgba(109, 143, 177, 0.65);
+  text-shadow: 0 1px 1px #FFF;
+  margin: 0 .25rem;
+  text-align: center;
+}
+.radioshow .cue:hover {
+  background: rgba(102, 204, 255, 0.35);
+}
+.radioshow .trigger:checked + .cue {
+  background: #66ccff;
+  color: #FFF;
+  text-shadow: 0 -1px 1px #6d8fb1;
+}
+.radioshow .trigger:checked + .cue:nth-child(n) + .story {
+  box-shadow: 0 0 0 3px rgba(109, 143, 177, 0.35) inset, 0 3em 4em -2em rgba(0, 0, 0, 0.35);
+  z-index: 2;
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+.radioshow-bottom {
   height: auto;
   padding-top: 73vh;
 }
-.showcase-alt .story {
+.radioshow-bottom .story {
   top: 0;
   bottom: 3em;
 }
-.showcase-alt input[type=radio] {
-  background-color: rgba(109, 143, 177, 0.15000000000000002);
+.radioshow-bottom .trigger {
+  background-color: rgba(109, 143, 177, 0.55);
 }
-.showcase-alt input[type=radio]:checked {
-  background-color: #66ccff;
+.radioshow-fade .story {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: opacity 0.75s ease 0s;
+  -moz-transition: opacity 0.75s ease 0s;
+  -ms-transition: opacity 0.75s ease 0s;
+  -o-transition: opacity 0.75s ease 0s;
+  transition: opacity 0.75s ease 0s;
 }
-.showcase-left {
+.radioshow-scale .story {
+  -webkit-transition: all 0.75s ease 0s;
+  -moz-transition: all 0.75s ease 0s;
+  -ms-transition: all 0.75s ease 0s;
+  -o-transition: all 0.75s ease 0s;
+  transition: all 0.75s ease 0s;
+}
+.radioshow-left {
   text-align: left;
 }
-.showcase-right {
+.radioshow-right {
   text-align: right;
 }
-.showcase-right [data-title]:before {
+.radioshow-right [data-title]:before {
   left: auto;
   right: -100%;
+}
+.hide-text .text,
+.hide-text [data-title]:hover:before,
+.hide-text [data-title]:hover:after {
+  display: none;
+}
+.static-top .text {
+  right: 0;
+  top: 0;
+  left: 0;
+  height: 35%;
+}
+.static-bottom .text {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 35%;
+}
+.static-right .text {
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 35%;
+}
+.static-left .text {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 35%;
 }
 .slide-up .text {
   right: 0;
   top: 100%;
   left: 0;
   height: 35%;
-  -webkit-transition: top 0.65s;
-  -moz-transition: top 0.65s;
-  -ms-transition: top 0.65s;
-  -o-transition: top 0.65s;
-  transition: top 0.65s;
+  -webkit-transition: top 0.85s ease 0s;
+  -moz-transition: top 0.85s ease 0s;
+  -ms-transition: top 0.85s ease 0s;
+  -o-transition: top 0.85s ease 0s;
+  transition: top 0.85s ease 0s;
 }
-.slide-up .story:hover .text,
-.slide-up.sticky-text:hover .text,
-.slide-up.persist-text .text {
+.slide-up:hover .text {
   top: 65%;
 }
 .slide-down .text {
@@ -226,15 +244,13 @@ article {
   bottom: 100%;
   left: 0;
   height: 35%;
-  -webkit-transition: bottom 0.65s;
-  -moz-transition: bottom 0.65s;
-  -ms-transition: bottom 0.65s;
-  -o-transition: bottom 0.65s;
-  transition: bottom 0.65s;
+  -webkit-transition: bottom 0.85s ease 0s;
+  -moz-transition: bottom 0.85s ease 0s;
+  -ms-transition: bottom 0.85s ease 0s;
+  -o-transition: bottom 0.85s ease 0s;
+  transition: bottom 0.85s ease 0s;
 }
-.slide-down .story:hover .text,
-.slide-down.sticky-text:hover .text,
-.slide-down.persist-text .text {
+.slide-down:hover .text {
   bottom: 65%;
 }
 .slide-left .text {
@@ -242,15 +258,13 @@ article {
   bottom: 0;
   left: 100%;
   width: 35%;
-  -webkit-transition: left 0.65s;
-  -moz-transition: left 0.65s;
-  -ms-transition: left 0.65s;
-  -o-transition: left 0.65s;
-  transition: left 0.65s;
+  -webkit-transition: left 0.85s ease 0s;
+  -moz-transition: left 0.85s ease 0s;
+  -ms-transition: left 0.85s ease 0s;
+  -o-transition: left 0.85s ease 0s;
+  transition: left 0.85s ease 0s;
 }
-.slide-left .story:hover .text,
-.slide-left.sticky-text:hover .text,
-.slide-left.persist-text .text {
+.slide-left:hover .text {
   left: 65%;
 }
 .slide-right .text {
@@ -258,14 +272,12 @@ article {
   right: 100%;
   bottom: 0;
   width: 35%;
-  -webkit-transition: right 0.65s;
-  -moz-transition: right 0.65s;
-  -ms-transition: right 0.65s;
-  -o-transition: right 0.65s;
-  transition: right 0.65s;
+  -webkit-transition: right 0.85s ease 0s;
+  -moz-transition: right 0.85s ease 0s;
+  -ms-transition: right 0.85s ease 0s;
+  -o-transition: right 0.85s ease 0s;
+  transition: right 0.85s ease 0s;
 }
-.slide-right .story:hover .text,
-.slide-right.sticky-text:hover .text,
-.slide-right.persist-text .text {
+.slide-right:hover .text {
   right: 65%;
 }

@@ -1,13 +1,15 @@
 @import "_variables.less";
 @import "_mixins.less";
 
+@import url(http://fonts.googleapis.com/css?family=Sansita+One);
+
 /* STYLES */
 body {
 	margin:0;
-	padding:4em 0 0 0;
+	padding:0;
 	font-family:Helvetica, arial, freesans, clean, sans-serif;
 	font-size:13px;
-	background:@bg;
+	background:@bg url(http://bg.siteorigin.com/image/generate?color=%23f1efee&pattern=dust&blend=Multiply&intensity=10&noise=3.4);
 }
 
 /* Utility Styles */
@@ -20,9 +22,15 @@ body {
 	text-shadow:none;
 }
 
+.mark {
+	font-family:"Sansita One", arial, freesans, clean, sans-serif;
+}
 h1,h2,h3,h4 {
 	font-weight:100;
 	margin:0;
+}
+h1 small {
+	font-size:1.65rem;
 }
 
 a {
@@ -39,17 +47,71 @@ header {
 nav {
 	li {
 		list-style:none;
-		margin:0 1em 0 0;
-		padding:0;
+		margin:0;
+		padding:.1em .2em;
+		border-radius:.25em;
 		display:inline-block;
 		cursor:pointer;
+		&:not(.cat):hover {
+			box-shadow:0 0 0 1px fadeout(@base, 80%);
+			border:0;
+			text-shadow:0 0 2px fadeout(@base, 85%);
+			background:fadeout(@base, 85%);
+		}
 	}
 	.cat {
-		margin-right:.3em;
 		cursor:default;
+		color:@base-border;
+	}
+	.active,
+	.active:hover {
+		box-shadow:0 0 0 1px fadeout(@base, 85%);
+		border:0;
+		border-top:1px solid fadeout(#FFF, 35%);
+		text-shadow:0 0 2px darken(@accent, 25%);
+		color:#FFF;
+		background:@accent;
 	}
 }
 section {
 	min-height:50em;
 	padding:2em 0;
+}
+
+footer {
+	text-align:center;
+	padding:2em;
+	margin-top:3em;
+	border-top:2px solid fadeout(@base, 85%);
+	img {
+		vertical-align:middle;
+	}
+}
+.button {
+	position:relative;
+	border-radius:.25em;
+	padding:.25em 1em .35em 1em;
+	box-shadow:0 0 0 1px rgba(0,0,0,.25);
+	border:0;
+	border-top:1px solid fadeout(#FFF, 35%);
+	text-shadow:0 0 2px rgba(0,0,100,.85);
+	color:#FFF;
+	font-size:1.2em;
+	display:inline-block;
+	outline:none;
+	cursor:pointer;
+	background:@accent none no-repeat 0 0;
+	//.gradient(@accent, darken(@accent, 15%));
+	
+	&:hover,
+	&:focus {
+		box-shadow:0 0 0 1px rgba(0,0,0,.35), 0 0 1em rgba(0,0,0,.35);
+		//.gradient(lighten(@accent,3%), lighten(@accent, 1%));
+	}
+	
+	&:active {
+		//.gradient(lighten(@accent,15%), @accent);
+		background-color:@base;
+		border-top-color:lighten(@base,10%);
+	}
 }

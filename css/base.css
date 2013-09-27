@@ -1,10 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Sansita+One);
 /* STYLES */
 body {
   margin: 0;
-  padding: 4em 0 0 0;
+  padding: 0;
   font-family: Helvetica, arial, freesans, clean, sans-serif;
   font-size: 13px;
-  background: #f1efee;
+  background: #f1efee url(http://bg.siteorigin.com/image/generate?color=%23f1efee&pattern=dust&blend=Multiply&intensity=10&noise=3.4);
 }
 /* Utility Styles */
 .hidden {
@@ -15,12 +16,18 @@ body {
   color: #FFFFFF;
   text-shadow: none;
 }
+.mark {
+  font-family: "Sansita One", arial, freesans, clean, sans-serif;
+}
 h1,
 h2,
 h3,
 h4 {
   font-weight: 100;
   margin: 0;
+}
+h1 small {
+  font-size: 1.65rem;
 }
 a {
   text-decoration: none;
@@ -34,16 +41,64 @@ header {
 }
 nav li {
   list-style: none;
-  margin: 0 1em 0 0;
-  padding: 0;
+  margin: 0;
+  padding: .1em .2em;
+  border-radius: .25em;
   display: inline-block;
   cursor: pointer;
 }
+nav li:not(.cat):hover {
+  box-shadow: 0 0 0 1px rgba(51, 54, 57, 0.19999999999999996);
+  border: 0;
+  text-shadow: 0 0 2px rgba(51, 54, 57, 0.15000000000000002);
+  background: rgba(51, 54, 57, 0.15000000000000002);
+}
 nav .cat {
-  margin-right: .3em;
   cursor: default;
+  color: #6d8fb1;
+}
+nav .active,
+nav .active:hover {
+  box-shadow: 0 0 0 1px rgba(51, 54, 57, 0.15000000000000002);
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.65);
+  text-shadow: 0 0 2px #0099e5;
+  color: #FFF;
+  background: #66ccff;
 }
 section {
   min-height: 50em;
   padding: 2em 0;
+}
+footer {
+  text-align: center;
+  padding: 2em;
+  margin-top: 3em;
+  border-top: 2px solid rgba(51, 54, 57, 0.15000000000000002);
+}
+footer img {
+  vertical-align: middle;
+}
+.button {
+  position: relative;
+  border-radius: .25em;
+  padding: .25em 1em .35em 1em;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.65);
+  text-shadow: 0 0 2px rgba(0, 0, 100, 0.85);
+  color: #FFF;
+  font-size: 1.2em;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  background: #66ccff none no-repeat 0 0;
+}
+.button:hover,
+.button:focus {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 0 1em rgba(0, 0, 0, 0.35);
+}
+.button:active {
+  background-color: #333639;
+  border-top-color: #4b5054;
 }

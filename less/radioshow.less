@@ -14,12 +14,12 @@
 	left:-100%;
 	background:fadeout(#000,35%);
 	color:#FFF;
-	padding:.5em 1em;
-	box-shadow:0 0 .5em fadeout(@base-bg,50%);
-	border-radius:.35em;
+	padding:.5rem 1rem;
+	box-shadow:0 0 .5rem fadeout(@base-bg,50%);
+	border-radius:.35rem;
 	white-space:nowrap;
-	font-size:1.3em;
-	letter-spacing:-.1em;
+	font-size:.85rem;
+	text-shadow:0 -1px 1px #000;
 	z-index:1;
 }
 [data-title]:after {
@@ -28,7 +28,7 @@
 	left:9%;
 	border-style:solid;
 	border-color:fadeout(#000,35%) transparent transparent transparent;
-	border-width:.65em .65em 0 .65em;
+	border-width:.5rem .5rem 0 .5rem;
 	width:0;
 	height:0;
 	z-index:2;
@@ -40,9 +40,13 @@
 }
 
 /* layout helper styles */
+body {
+	padding-bottom:4em;
+}
+
 section {
 	margin:0 auto;
-	width:85vw;
+	width:70vw;
 	max-width:1024px;
 	
 	header {
@@ -56,57 +60,33 @@ article {
 	padding:0;
 }
 .control-bar {
-	line-height:1.4;
+	line-height:1;
 	margin:0;
-	background:@base;
+	background:fadeout(@base, 85%);
+	border-top:1px solid darken(@bg, 15%);
+	border-bottom:1px solid lighten(@bg, 35%);
 	color:#FFF;
-	padding:.5em;
-	position:fixed;
-	text-align:center;
-	font-size:1.2em;
-	top:0;
-	left:0;
-	right:0;
-	nav .cat {
-		color:@base-border;
-	}
+	padding:1em;
+	border-radius:.3em;
+	font-size:.85rem;
 }
-
 .button {
-	border-radius:.25em;
-	padding:.25em 1em .35em 1em;
-	box-shadow:0 0 0 1px rgba(0,0,0,.25);
-	border:0;
-	border-top:1px solid lighten(@accent, 10%);
-	text-shadow:0 0 2px rgba(0,0,100,.85);
-	color:#FFF;
-	font-size:1.2em;
-	display:inline-block;
-	outline:none;
-	cursor:pointer;
-	background:@accent none no-repeat 0 0;
-	/* .gradient(@accent, darken(@accent, 15%)); */
-	
-	&:hover,
-	&:focus {
-		box-shadow:0 0 0 1px rgba(0,0,0,.35), 0 0 1em rgba(0,0,0,.35);
-		/* .gradient(lighten(@accent,3%), lighten(@accent, 1%)); */
-	}
-	
+	background-color:@accent;
+	border-top-color:lighten(@accent, 10%);
 	&:active {
-		/* .gradient(lighten(@accent,15%), @accent); */
 		background-color:@base;
 		border-top-color:lighten(@base,10%);
 	}
 }
 
 /* The important parts */
-.showcase {
+.radioshow {
 	position:relative;
 	clear:both;
-	height:73vh;
+	height:70vh;
 	width:100%;
 	text-align:center;
+	-webkit-backface-visibility: hidden;
 	
 	.story {
 		position:absolute;
@@ -114,15 +94,13 @@ article {
 		left:0;
 		right:0;
 		bottom:0;
-		opacity:0;
-		border:0px solid darken(@base,15%);
 		border-radius:.5em;
 		background: @base no-repeat 50% 50%;
 		background-size: cover;
-		box-shadow:0 0 2em fadeout(#000,65%);
+		box-shadow:0 0 0 3px fadeout(@base-border,65%) inset, 0 1em 2em 0em  fadeout(#000,85%);
 		z-index:1;
+		opacity:0;
 		overflow:hidden;
-		.transition(all, 1s);
 		.scale(.6);
 	}
 	
@@ -137,6 +115,11 @@ article {
 		.padme {
 			padding:2em;
 		}
+		
+		.next {
+			float:right;
+			margin-left:1em;
+		}
 	}
 	
 	h2 {
@@ -148,40 +131,44 @@ article {
 		font-size:1.3em;
 	}
 	
-	input {
+	.trigger {
+		position:absolute;
+		opacity:0;
+		z-index:0;
+	}
+	.cue {
 		position:relative;
+		box-shadow:0 0 0 2px @base-border;
+		border-top:.1rem solid fadeout(#FFF,35%);
+		border-radius:1.5rem;
+		padding:.25rem .5rem .25rem .5rem;
+		z-index:100;
+		cursor:pointer;
+		background: fadeout(@base-bg,65%);
+		color:fadeout(@base-border, 35%);
+		text-shadow:0 1px 1px #FFF;
+		margin:0 .25rem;
+		text-align:center;
 		
-		&[type=radio] {
-			-webkit-appearance:none;
-			border:2px solid @base-border;
-			border-radius:1.5em;
-			padding:.75em;
-			z-index:100;
-			cursor:pointer;
-			background: fadeout(@base-bg,85%);
-			margin-right:1em;
-			.scale(1);
-			
-			&:checked {
-				background:@accent;
-			}
-		}
-		
-		&:checked + .story {
-			.transition(all, .75s);
-			.scale(1);
-			opacity:1;
-			z-index:2;
+		&:hover {
+			background: fadeout(@accent,65%);
 		}
 	}
+	.trigger:checked + .cue {
+		background:@accent;
+		color:#FFF;
+		text-shadow:0 -1px 1px @base-border;
+	}
 	
-	label.next {
-		float:right;
-		margin-left:1em;
+	.trigger:checked + .cue:nth-child(n)  + .story {
+		box-shadow:0 0 0 3px fadeout(@base-border,65%) inset, 0 3em 4em -2em  fadeout(#000,65%);
+		z-index:2;
+		opacity:1;
+		.scale(1);
 	}
 }
 
-.showcase-alt {
+.radioshow-bottom {
 	height:auto;
 	padding-top:73vh;
 	
@@ -189,20 +176,29 @@ article {
 		top:0;
 		bottom:3em;
 	}
-	input[type=radio] {
-		background-color: fadeout(@base-border,85%);
-		
-		&:checked {
-			background-color:@accent;
-		}
+	.trigger {
+		background-color: fadeout(@base-border,45%);
 	}
 }
 
-.showcase-left {
+.radioshow-fade {
+	.story {
+		.scale(1);
+		.transition(opacity, .75s);
+	}
+}
+
+.radioshow-scale {
+	.story {
+		.transition(all, .75s);
+	}
+}
+
+.radioshow-left {
 	text-align:left;
 }
 
-.showcase-right {
+.radioshow-right {
 	text-align:right;
 	
 	[data-title]:before {
@@ -211,18 +207,49 @@ article {
 	}
 }
 
+.hide-text {
+	.text,
+	[data-title]:hover:before,
+	[data-title]:hover:after {
+		display:none;
+	}
+}
+
+
+.static-top .text {
+	right:0;
+	top:0;
+	left:0;
+	height:35%;
+}
+.static-bottom .text {
+	right:0;
+	bottom:0;
+	left:0;
+	height:35%;
+}
+.static-right .text {
+	right:0;
+	top:0;
+	bottom:0;
+	width:35%;
+}
+.static-left .text {
+	left:0;
+	top:0;
+	bottom:0;
+	width:35%;
+}
 .slide-up {
 	.text {
 		right:0;
 		top:100%;
 		left:0;
 		height:35%;
-		.transition(top, .65s);
+		.transition(top, .85s);
 	}
 	
-	.story:hover .text,
-	&.sticky-text:hover .text,
-	&.persist-text .text {
+	&:hover .text{
 		top:65%;
 	}
 }
@@ -233,12 +260,10 @@ article {
 		bottom:100%;
 		left:0;
 		height:35%;
-		.transition(bottom, .65s);
+		.transition(bottom, .85s);
 	}
 	
-	.story:hover .text,
-	&.sticky-text:hover .text,
-	&.persist-text .text {
+	&:hover .text {
 		bottom:65%;
 	}
 }
@@ -249,12 +274,10 @@ article {
 		bottom:0;
 		left:100%;
 		width:35%;
-		.transition(left, .65s);
+		.transition(left, .85s);
 	}
 	
-	.story:hover .text,
-	&.sticky-text:hover .text,
-	&.persist-text .text {
+	&:hover .text {
 		left:65%;
 	}
 }
@@ -265,12 +288,10 @@ article {
 		right:100%;
 		bottom:0;
 		width:35%;
-		.transition(right, .65s);
+		.transition(right, .85s);
 	}
 	
-	.story:hover .text,
-	&.sticky-text:hover .text,
-	&.persist-text .text {
+	&:hover .text {
 		right:65%;
 	}
 }
