@@ -8,9 +8,56 @@
 	</head>
 	
 	<body>
-	
-		<?php include "channels.php"; ?>
-	
+		<section>
+			<header>
+				<h1><span class="mark">RadioShow</span> <small>A CSS3 Image Showcase</small></h1>
+				<nav class="control-bar">
+					<ul>
+						<li class="cat">Placement:</li>
+						<li data-layout="radioshow-top" class="active">top</li>
+						<li data-layout="radioshow-bottom">bottom</li>
+						<li class="cat">/</li>
+						<li data-pos="radioshow-left">left</li>
+						<li data-pos="" class="active">center</li>
+						<li data-pos="radioshow-right">right</li>
+					</ul>
+					
+					<ul>
+						<li class="cat">Transition:</li>
+						<li data-fx="">none</li>
+						<li data-fx="radioshow-fade" class="active">fade</li>
+						<li data-fx="radioshow-scale">scale</li>
+					</ul>
+					
+					<ul>
+						<li class="cat">Caption:</li>
+						<li data-text="" data-control="slide" class="active">hover</li>
+						<li data-text="persist-text" data-control="static">persist</li>
+						<li data-text="hide-text" data-control="hide">hide</li>
+					</ul>
+					
+					<ul>
+						<li class="cat slide">Direction:</li>
+						<li class="slide" data-slide="slide-up">up</li>
+						<li class="slide" data-slide="slide-down">down</li>
+						<li class="slide" data-slide="slide-left">left</li>
+						<li class="slide active" data-slide="slide-right">right</li>
+					</ul>
+					
+					<ul>
+						<li class="cat static hidden">Position:</li>
+						<li class="static hidden" data-static="static-top">top</li>
+						<li class="static hidden" data-static="static-bottom">bottom</li>
+						<li class="static hidden active" data-static="static-left">left</li>
+						<li class="static hidden" data-static="static-right">right</li>
+					</ul>
+				</nav>
+			</header>
+			<?php include "channels.php"; ?>
+			<footer>
+				<a href="https://github.com/pixleyes/RadioShow">RadioShow on GitHub</a>
+			</footer>
+		</section>
 	</body>
 	<script src="/core/j/jquery-1.8.0.min.js"></script>
 	<script>

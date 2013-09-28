@@ -39,45 +39,6 @@
 	display:block;
 }
 
-/* layout helper styles */
-body {
-	padding-bottom:4em;
-}
-
-section {
-	margin:0 auto;
-	width:70vw;
-	max-width:1024px;
-	
-	header {
-		font-size:2em;
-		margin:0 0 1em 0;
-	}
-	
-}
-article {
-	clear:both;
-	padding:0;
-}
-.control-bar {
-	line-height:1;
-	margin:0;
-	background:fadeout(@base, 85%);
-	border-top:1px solid darken(@bg, 15%);
-	border-bottom:1px solid lighten(@bg, 35%);
-	color:#FFF;
-	padding:1em;
-	border-radius:.3em;
-	font-size:.85rem;
-}
-.button {
-	background-color:@accent;
-	border-top-color:lighten(@accent, 10%);
-	&:active {
-		background-color:@base;
-		border-top-color:lighten(@base,10%);
-	}
-}
 
 /* The important parts */
 .radioshow {
@@ -101,45 +62,51 @@ article {
 		z-index:1;
 		opacity:0;
 		overflow:hidden;
-		.scale(.6);
-	}
-	
-	.text {
-		position:absolute;
-		text-align:left;
-		border-radius:0;
-		background:fadeout(#000,45%);
-		color: @bg;
-		overflow-y:auto;
 		
-		.padme {
-			padding:2em;
+		img {
+			width:100%;
 		}
-		
-		.next {
-			float:right;
-			margin-left:1em;
+		.text {
+			position:absolute;
+			text-align:left;
+			border-radius:0;
+			background:fadeout(#000,45%);
+			color: @bg;
+			overflow-y:auto;
+			
+			.padme {
+				padding:2em;
+			}
+			
+			.next {
+				float:right;
+				margin-left:1em;
+			}
+			
+			h2 {
+				margin-bottom:1em;
+				color: @accent;
+				text-shadow:0 0px 2px fadeout(#000, 35%);
+			}
+			
+			p {
+				font-size:1.3em;
+			}
 		}
-	}
-	
-	h2 {
-		margin-bottom:1em;
-		color: @accent;
-	}
-	
-	p {
-		font-size:1.3em;
 	}
 	
 	.trigger {
 		position:absolute;
+		left:50%;
+		top:50%;
+		margin:0 0 0 -.5em;
 		opacity:0;
 		z-index:0;
 	}
 	.cue {
 		position:relative;
 		box-shadow:0 0 0 2px @base-border;
-		border-top:.1rem solid fadeout(#FFF,35%);
+		border-top:1px solid fadeout(#FFF,35%);
 		border-radius:1.5rem;
 		padding:.25rem .5rem .25rem .5rem;
 		z-index:100;
@@ -149,6 +116,7 @@ article {
 		text-shadow:0 1px 1px #FFF;
 		margin:0 .25rem;
 		text-align:center;
+		.transition(background, .35s,.1s);
 		
 		&:hover {
 			background: fadeout(@accent,65%);
@@ -164,7 +132,6 @@ article {
 		box-shadow:0 0 0 3px fadeout(@base-border,65%) inset, 0 3em 4em -2em  fadeout(#000,65%);
 		z-index:2;
 		opacity:1;
-		.scale(1);
 	}
 }
 
@@ -183,14 +150,17 @@ article {
 
 .radioshow-fade {
 	.story {
-		.scale(1);
 		.transition(opacity, .75s);
 	}
 }
 
 .radioshow-scale {
 	.story {
+		.scale(.6);
 		.transition(all, .75s);
+	}
+	.trigger:checked + .cue:nth-child(n)  + .story {
+		.scale(1);
 	}
 }
 
@@ -214,7 +184,6 @@ article {
 		display:none;
 	}
 }
-
 
 .static-top .text {
 	right:0;
